@@ -1,0 +1,26 @@
+.map-text {
+    font-size: 25rem;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    fill: orangered;
+}
+
+/* #names {
+    display: none;
+} */
+
+.center{
+    margin: auto;
+    display: block;
+}
+
+.border{
+    padding: 1rem;
+    border: orangered 2px solid;
+    border-radius: 5px;
+    margin-bottom: .5rem;
+}
+
+.map-text{
+    padding-top: 1rem;
+}
