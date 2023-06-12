@@ -3,12 +3,14 @@ const map = document.getElementById("map");
 const names = document.getElementById("names");
 const translations = document.getElementById("translations");
 
+// langauge codes - for countries
 const langs = ["FR","ES","SE","DE","FI","NO","PL",
-    "IT","GB","RO","BY","EL","BG","IS","PT","HU",
+    "IT","RO","EL","BG","IS","PT","HU",
     "CS","IE","LT","LV","HR","BA","SK","EE","NL","CH",
-    "MD","BE","AL","MK","SI","ME","CY","FO","AD","MT",
-    "LI","GG","SM","GI","MC", "TR", "RU"];
-    // "AT","CZ","DK","UA","LU","VA" - not working
+    "BE","MK","SI","CY","FO","AD","MT",
+    "LI","GG","SM","GI","MC",
+    "TR","RU","UK","GRC","CS","DA","LB","BE","MK","SQ", "SRP", "SR"];
+    // https://rapidapi.com/translated/api/mymemory-translation-memory/discussions/35126
 
 let lang_ele = [];
 
@@ -16,10 +18,10 @@ langs.forEach((element, index) => {
     lang_ele[index] = document.getElementById(langs[index]);
 });
 
-// map.onclick = () => {
-//     names.style.display = names.style.display === "none" ? "block" : "none";
-//     translations.style.display = translations.style.display === "block" ? "none" : "block";
-// }
+map.onclick = () => {
+    names.style.display = names.style.display === "none" ? "block" : "none";
+    translations.style.display = translations.style.display === "block" ? "none" : "block";
+}
 
 async function get_translation(translate_string, lang, index) {
     const url = "https://translated-mymemory---translation-memory.p.rapidapi.com/get?" 
