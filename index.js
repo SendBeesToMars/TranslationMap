@@ -3,20 +3,12 @@ const map = document.getElementById("map");
 const names = document.getElementById("names");
 const translations = document.getElementById("translations");
 
-const ee = document.getElementById("EE");
-const lt = document.getElementById("LT");
-const lv = document.getElementById("LV");
-
-// const languages = ["ee", "lv", "lt"];
-// const languages_items = [ee, lv, lt];
-
 const langs = ["FR","ES","SE","DE","FI","NO","PL",
-    "IT","GB","RO","BY","EL","BG","IS","PT","CZ","HU",
+    "IT","GB","RO","BY","EL","BG","IS","PT","HU",
     "CS","IE","LT","LV","HR","BA","SK","EE","NL","CH",
-    "MD","BE","AL","MK","SI","ME","CY","LU","FO","AD","MT",
-    "LI","GG","SM","GI","MC","VA", "TR", "RU"];
-    // "AT","CZ","DK","UA" - not working
-// const langs = ["EE", "LV", "LT", "NO", "FI", "SE"];
+    "MD","BE","AL","MK","SI","ME","CY","FO","AD","MT",
+    "LI","GG","SM","GI","MC", "TR", "RU"];
+    // "AT","CZ","DK","UA","LU","VA" - not working
 
 let lang_ele = [];
 
@@ -38,15 +30,21 @@ async function get_translation(translate_string, lang, index) {
     const options = {
         method: 'GET',
         headers: {
+            'X-RapidAPI-Key': key,
+            'X-RapidAPI-Host': host
         },
     };
 
     try {
-        const response = await fetch(url, options);
-        let result = await response.text();
-        result = JSON.parse(result);
-        console.log(result);
-        lang_ele[index].textContent = result.responseData.translatedText;
+        if (lang_ele[index]) {
+            const response = await fetch(url, options);
+            let result = await response.text();
+            result = JSON.parse(result);
+            console.log(result);
+            console.log(lang_ele[index]);
+            console.log(index);
+            lang_ele[index].textContent = result.responseData.translatedText;
+        }
     } catch (error) {
         console.error(error);
     }
